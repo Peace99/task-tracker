@@ -265,15 +265,15 @@ ul {
 .tasksoutput > div {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    color: white;
+    color: black;
 }
 
 .tasksoutput > div > span {
     padding: 30px;
-    background: var(--blackgrey);
+    background: palevioletred;
     margin: 10px;
     height: fit-content;
-    color: #999;
+    color: black;
     vertical-align: middle;
 }
 
@@ -291,7 +291,7 @@ ul {
 }
 
 .tasksoutput > div > span > h2 {
-    color: white;
+    color: red;
 }
 
 .btn {
