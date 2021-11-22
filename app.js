@@ -33,12 +33,11 @@ function showInsertTasks(){
 
 function insert() {
   if((content.value != '') && (title.value != '')) {
-      let task = new Task(title.value, content.value, tasksCount + 1, stats);
+      let task = new Task(title.value, content.value, tasksCount + 1);
       Tasks.push(task);
       saveTasks();
       title.value = '';
       content.value = '';
-      stats.value = ''
       error.style.color = 'black';
       insertasks.style.display = 'none';
   } else {
