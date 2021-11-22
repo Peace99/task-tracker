@@ -5,14 +5,6 @@ menu.onclick = () => {
   navbar.classList.toggle("active");
 };
 
-let statusBtn = document.querySelector(".dropbtn")
-let list = document.querySelector(".content")
-
-statusBtn.addEventListener("click", ()=>{
-    list.classList.toggle("newlist")
-})
-
-
 let Tasks = []
 let tasksCount = 0
 
@@ -21,6 +13,7 @@ const insertasks = document.getElementById("insertasks")
 const content = document.getElementById("contents")
 const title = document.getElementById("title")
 const error = document.getElementById("error")
+const stats = document.getElementById("status")
 
 function start(){
   hideinsertasks()
@@ -40,11 +33,12 @@ function showInsertTasks(){
 
 function insert() {
   if((content.value != '') && (title.value != '')) {
-      let task = new Task(title.value, content.value, tasksCount + 1);
+      let task = new Task(title.value, content.value, tasksCount + 1, stats);
       Tasks.push(task);
       saveTasks();
       title.value = '';
       content.value = '';
+      stats.value = ''
       error.style.color = 'black';
       insertasks.style.display = 'none';
   } else {
@@ -53,10 +47,11 @@ function insert() {
   }
 }
 
-let Task = function(title, content, id) {
+let Task = function(title, content, id, status) {
   this.title = title;
   this.content = content;
   this.id = id;
+  this.status = status
   var date = new Date();
   this.d = date.getDate();
   this.m = date.getMonth() + 1;
@@ -85,6 +80,7 @@ function displayTasks() {
       output += '<div>';
 
       for(var a = 0; a < loadedTasksOP.length; a++) {
+          output += '<h2>' + loadedTasksOP[a].status + '</h2>'
           output += '<span>';
           output += '<input class="x-btn" type="button" value="X" onclick="clearTask(' + loadedTasksOP[a].id + ');">'
           output += '<h2>' + loadedTasksOP[a].title + '</h2>' ;
@@ -100,4 +96,44 @@ function displayTasks() {
       tasksoutput.innerHTML = 'no Tasks';
   }
 
+}
+
+function clearTasks() {
+   Tasks = []
+   localStorage.removeItem('Tasks')
+   location.reload()
+}
+
+function clearTask(id) {
+  var newid = id - 1;
+  Tasks.splice(newid, 1);
+  saveTasks();
+}
+
+function reloadTasks(){
+  let loadtasksafresh = JSON.parse(localStorage.getItem('Tasks'))
+  if((loadtasksafresh != null) || (loadtasksafresh.length > 0)){
+    tasksCount = loadtasksafresh.length
+    for (var i = 0; i < loadtasksafresh.length; i++){
+      Tasks.push(loadtasksafresh[i])
+    }
+  }
+  else {
+    tasksCount = 0
+  }
+}
+
+function changeStatus(statuses){
+  if (statuses === "Pending"){
+    stats.innerText = 'Pending'
+  }
+  else if (statuses === "Fixed"){
+    stats.innerText = 'Fixed'
+  }
+  else if (statuses === "Blocked"){
+    stats.innerText = 'Blocked'
+  }
+  else {
+    stats.innerText = 'Assigned'
+  }
 }

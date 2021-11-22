@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 </head>
-<body>
+<body onload="reloadTasks(); loadTasks();displayTasks();">
     <header class="header">
     <a href="#" class="logo">Task Tracker</a>
     <div class="bx bx-menu" id="menu-icon"></div>
@@ -47,13 +47,12 @@
         <span class="tasksoutput" id="tasksoutput"></span>
     </div>
     <div class="dropdown">
-        <button class="dropbtn">All status</button>
-        <div clas="content">
-            <button class="lists" id="pending">Pending</button>
-            <button class="lists" id="fixed">Fixed</button>
-            <button class="lists" id="assigned">Assigned</button>
-            <button class="lists" id="blocked">Blocked</button>
-        </div>
+        <select id="stats" name="status" size="1" onchange="changeStatus()">
+            <option value="Pending">Pending</option>
+            <option value="Fixed">Fixed</option>
+            <option value="Blocked">Blocked</option>
+            <option value="Assigned">Assigned</option>
+        </select>
     </div>
 
     <input type="button" class="btn deletebtn" id="standart-rem" value="Delete all Tasks" onclick="clearTasks();">

@@ -327,7 +327,7 @@ ul {
     color: white;
 }
 
-@media only screen and (max-width: 899px) {
+@media only screen and (max-width: 798px) {
     header {
         font-size :3rem;
     }
@@ -348,16 +348,16 @@ ul {
 
     .insert-tasks > ul {
         font-size: 1.5rem;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
 
     .insert-tasks > ul > input, .insert-tasks > ul > textarea {
-        width: 75vw;
-        font-size: 1.5rem;
+        width: 45vw;
+        font-size: 1rem;
     }
 
     .title {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     .btn {
@@ -365,16 +365,25 @@ ul {
     }
 
     .content {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     .tasksoutput > div {
-        grid-template-columns: repeat(2, 1fr);
-        font-size: 2.5rem;
+        grid-template-columns: repeat(1, 1fr);
+        font-size: 1rem;
+    }
+
+    .tasksoutput > div > span {
+        padding: 20px;
+        background: palevioletred;
+        margin: 5px;
+        height: fit-content;
+        color: black;
+        vertical-align: middle;
     }
 
     .x-btn {
-        font-size: 2rem;
+        font-size: 1rem;
         width: 50px;
         height: 50px;
     }
