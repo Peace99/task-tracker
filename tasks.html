@@ -21,14 +21,13 @@
 </header>
 
 <div class="dropdown">
-    <button class="dropbtn">All status</button>
-    <div clas="content">
-        <button class="lists">All</button>
-        <button class="lists">Pending</button>
-        <button class="lists">Fixed</button>
-        <button class="lists">Assigned</button>
-        <button class="lists">Blocked</button>
-    </div>
+    <select id="stats" name="status" size="1" onchange="changeStatus()">
+        <option value="Pending">Pending</option>
+        <option value="Fixed">Fixed</option>
+        <option value="Blocked">Blocked</option>
+        <option value="Assigned">Assigned</option>
+    </select>
+</div>
 </div>
 <script src="app.js"></script>
 </body>
