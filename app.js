@@ -67,24 +67,24 @@ function saveTasks() {
 }
 
 function loadTasks() {
-  let loadedTasks = JSON.parse(localStorage.getItem('Tasks'));
+  let loadedTask = JSON.parse(localStorage.getItem('Tasks'));
   displayTasks();
 }
 
 function displayTasks() {
-  let loadedTasksOP = JSON.parse(localStorage.getItem('Tasks'));
-  if((loadedTasksOP != null) || (loadedTasksOP.length > 0)) {
+  let loadedTasks = JSON.parse(localStorage.getItem('Tasks'));
+  if((loadedTasks != null) || (loadedTasks.length > 0)) {
       let output = '';
 
       output += '<div>';
 
-      for(var a = 0; a < loadedTasksOP.length; a++) {
-          output += '<h2>' + loadedTasksOP[a].status + '</h2>'
+      for(var a = 0; a < loadedTasks.length; a++) {
+          output += '<h2>' + loadedTasks[a].status + '</h2>'
           output += '<span>';
-          output += '<input class="x-btn" type="button" value="X" onclick="clearTask(' + loadedTasksOP[a].id + ');">'
-          output += '<h2>' + loadedTasksOP[a].title + '</h2>' ;
-          output += loadedTasksOP[a].content;
-          output += '<br>' + '<i id="small">' + loadedTasksOP[a].d + '/' + loadedTasksOP[a].m + '/' + loadedTasksOP[a].y + '</i>';
+          output += '<input class="x-btn" type="button" value="X" onclick="clearTask(' + loadedTasks[a].id + ');">'
+          output += '<h2>' + loadedTasks[a].title + '</h2>' ;
+          output += loadedTasks[a].content;
+          output += '<br>' + '<i id="small">' + loadedTasks[a].d + '/' + loadedTasks[a].m + '/' + loadedTasks[a].y + '</i>';
           output +='</span>';
       }
 
