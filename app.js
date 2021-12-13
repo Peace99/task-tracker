@@ -46,7 +46,7 @@ function insert() {
   }
 }
 
-let Task = function(title, content, id, status) {
+let Task = function(title, content, id, status = 'Pending') {
   this.title = title;
   this.content = content;
   this.id = id;
@@ -72,28 +72,40 @@ function loadTasks() {
 }
 
 function displayTasks() {
-  let loadedTasks = JSON.parse(localStorage.getItem('Tasks'));
-  if((loadedTasks != null) || (loadedTasks.length > 0)) {
-      let output = '';
+  try {
+    let loadedTasks = JSON.parse(localStorage.getItem("Tasks"));
+    if (loadedTasks != null || loadedTasks.length > 0) {
+      let output = "";
 
-      output += '<div>';
+      output += "<div>";
 
-      for(var a = 0; a < loadedTasks.length; a++) {
-          output += '<h2>' + loadedTasks[a].status + '</h2>'
-          output += '<span>';
-          output += '<input class="x-btn" type="button" value="X" onclick="clearTask(' + loadedTasks[a].id + ');">'
-          output += '<h2>' + loadedTasks[a].title + '</h2>' ;
-          output += loadedTasks[a].content;
-          output += '<br>' + '<i id="small">' + loadedTasks[a].d + '/' + loadedTasks[a].m + '/' + loadedTasks[a].y + '</i>';
-          output +='</span>';
+      for (var a = 0; a < loadedTasks.length; a++) {
+        output += "<h2>" + loadedTasks[a].status + "</h2>";
+        output += "<span>";
+        output +=
+          '<input class="x-btn" type="button" value="X" onclick="clearTask(' +
+          loadedTasks[a].id +
+          ');">';
+        output += "<h2>" + loadedTasks[a].title + "</h2>";
+        output += loadedTasks[a].content;
+        output +=
+          "<br>" +
+          '<i id="small">' +
+          loadedTasks[a].d +
+          "/" +
+          loadedTasks[a].m +
+          "/" +
+          loadedTasks[a].y +
+          "</i>";
+        output += "</span>";
       }
 
-      output += '</div>';                    
+      output += "</div>";
       tasksoutput.innerHTML = output;
-      
-  } else {
-      tasksoutput.innerHTML = 'no Tasks';
-  }
+    } else {
+      tasksoutput.innerHTML = "no Tasks";
+    }
+  } catch (error) {}
 
 }
 
@@ -109,30 +121,60 @@ function clearTask(id) {
   saveTasks();
 }
 
-function reloadTasks(){
-  let loadtasksafresh = JSON.parse(localStorage.getItem('Tasks'))
-  if((loadtasksafresh != null) || (loadtasksafresh.length > 0)){
-    tasksCount = loadtasksafresh.length
-    for (var i = 0; i < loadtasksafresh.length; i++){
-      Tasks.push(loadtasksafresh[i])
+function reloadTasks() {
+  try {
+    let loadtasksafresh = JSON.parse(localStorage.getItem("Tasks"));
+    if (loadtasksafresh != null || loadtasksafresh.length > 0) {
+      tasksCount = loadtasksafresh.length;
+      for (var i = 0; i < loadtasksafresh.length; i++) {
+        Tasks.push(loadtasksafresh[i]);
+      }
+    } else {
+      tasksCount = 0;
     }
-  }
-  else {
-    tasksCount = 0
-  }
+  } catch (error) {}
 }
 
 function changeStatus(statuses){
-  if (statuses === "Pending"){
-    stats.innerText = 'Pending'
-  }
-  else if (statuses === "Fixed"){
-    stats.innerText = 'Fixed'
-  }
-  else if (statuses === "Blocked"){
-    stats.innerText = 'Blocked'
-  }
-  else {
-    stats.innerText = 'Assigned'
+  // get all task and filter by statuses
+  try {
+    if (statuses.toLowerCase() == "all") {
+      displayTasks();
+      return;
+    }
+    const filteredTask = JSON.parse(localStorage.getItem("Tasks")).filter(task => task.status.toLowerCase() == statuses.toLowerCase());
+    if (filteredTask != null || filteredTask.length > 0) {
+      let output = "";
+
+      output += "<div>";
+
+      for (var a = 0; a < filteredTask.length; a++) {
+        output += "<h2>" + filteredTask[a].status + "</h2>";
+        output += "<span>";
+        output +=
+          '<input class="x-btn" type="button" value="X" onclick="clearTask(' +
+          filteredTask[a].id +
+          ');">';
+        output += "<h2>" + filteredTask[a].title + "</h2>";
+        output += filteredTask[a].content;
+        output +=
+          "<br>" +
+          '<i id="small">' +
+          filteredTask[a].d +
+          "/" +
+          filteredTask[a].m +
+          "/" +
+          filteredTask[a].y +
+          "</i>";
+        output += "</span>";
+      }
+
+      output += "</div>";
+      tasksoutput.innerHTML = output;
+    } else {
+      tasksoutput.innerHTML = "no Tasks";
+    }
+  } catch (error) {
+    console.log(error.message);
   }
 }

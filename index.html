@@ -47,7 +47,8 @@
         <span class="tasksoutput" id="tasksoutput"></span>
     </div>
     <div class="dropdown">
-        <select id="stats" name="status" size="1" onchange="changeStatus()">
+        <select id="stats" name="status" size="1" onchange="changeStatus(this.value)">
+            <option value="All">All</option>
             <option value="Pending">Pending</option>
             <option value="Fixed">Fixed</option>
             <option value="Blocked">Blocked</option>
