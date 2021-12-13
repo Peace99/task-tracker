@@ -197,3 +197,54 @@ header {
     cursor: pointer;
     outline: none;
 }
+
+@media(max-width: 768px){
+    #main-holder {
+        width: 80%;
+        height: auto;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        background-color: palevioletred;
+        border-radius: 7px;
+        box-shadow: 0px 0px 5px 2px black;
+        margin: 10px;
+    }
+
+    #login-form-submit {
+        width: 40%;
+        padding: 7px;
+        border: none;
+        border-radius: 5px;
+        color: black;
+        font-weight: bold;
+        background-color: palevioletred;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .signup{
+        width: 40%;
+        padding: 7px;
+        border: none;
+        border-radius: 5px;
+        color: black;
+        font-weight: bold;
+        background-color: palevioletred;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .login-form-field {
+        border: none;
+        border-bottom: 1px solid #3a3a3a;
+        margin-bottom: 8px;
+        border-radius: 2px;
+        outline: none;
+        padding: 0px 0px 2px 2px;
+    }
+
+    #login-header {
+        font-size: 25px;
+    }
+}
