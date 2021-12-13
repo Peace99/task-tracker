@@ -21,11 +21,11 @@
 </header>
 
 <div class="btn-container">
-    <button class="btnz">All</button>
-    <button class="btnz">Pending</button>
-    <button class="btnz">Fixed</button>
-    <button class="btnz">Blocked</button>
-    <button class="btnz">Assigned</button>
+    <button class="btnz" onclick="getTask('all')">All</button>
+    <button class="btnz" onclick="getTask('Pending')">Pending</button>
+    <button class="btnz" onclick="getTask('Fixed')">Fixed</button>
+    <button class="btnz" onclick="getTask('Blocked')">Blocked</button>
+    <button class="btnz" onclick="getTask('Assigned')">Assigned</button>
 </div>
 
 <div class="grid">
@@ -34,6 +34,6 @@
    </div>
 </div>
 
-<script src="app.js"></script>
+<script src="tasks.js"></script>
 </body>
 </html>
