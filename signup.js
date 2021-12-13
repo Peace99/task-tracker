@@ -7,6 +7,13 @@ signupBtn.addEventListener("click", (event) => {
 
 const checkPassword = (password, confirmPassword) => password === confirmPassword
 
+const isMailUnique = (email) => {
+    // get all user
+    const allRecord = JSON.parse(localStorage.getItem("Users")).filter(user => user.email.toLowerCase() == email.toLowerCase());
+
+    return allRecord.length === 0;
+}
+
 const registerUser = () => {
     const firstName = document.getElementById("firstName"),
         lastName = document.getElementById("lastName"),
@@ -32,6 +39,11 @@ const registerUser = () => {
         return;
     }
 
+    if (!isMailUnique(email.value)) {
+        alert("Email already exist!");
+        return;
+    }
+
     const newUser = {
         firstName: firstName.value,
         lastName: lastName.value,
@@ -43,7 +55,10 @@ const registerUser = () => {
     const existingRecords = JSON.parse(localStorage.getItem("Users"));
     if (existingRecords != null && existingRecords.length > 0) {
         localStorage.setItem("Users", JSON.stringify([...existingRecords, newUser]));
-        container[0].innerHTML = `${newUser.firstName} signup successful!`;
+        container[0].innerHTML = `
+            ${newUser.firstName} signup successful! <br />
+            <a href="./account.html">Proceed to Login...</a>
+        `;
         return
     }
 
