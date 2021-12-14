@@ -19,14 +19,19 @@ const loginUser = () => {
     }
 
     // get all record and find user
-    const userRecord = JSON.parse(localStorage.getItem("Users")).find(
+    const userRecord = JSON.parse(localStorage.getItem("Users"))
+    if(userRecord){
+    const accountRecord = userRecord.find(
         user => user.email.toLowerCase() == username.value.toLowerCase() &&
             user.password.toLowerCase() == password.value
     )
+    return accountRecord
+    }
 
     if (userRecord) {
         container.innerHTML = `${userRecord.firstName} logged in successfully!`
     } else {
         container.innerHTML = "Invalid login credentials!";
     }
+    window.location.href ="/account.html"
 }
