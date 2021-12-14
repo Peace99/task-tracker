@@ -9,6 +9,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 </head>
 <body>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+    <script>
+        const firebaseConfig = {
+          apiKey: "AIzaSyBa0IcL4UXCFLZXAlbmbbpBF0OzFwJAzxI",
+          authDomain: "task-tracker-415a5.firebaseapp.com",
+          projectId: "task-tracker-415a5",
+          storageBucket: "task-tracker-415a5.appspot.com",
+          messagingSenderId: "934041592554",
+          appId: "1:934041592554:web:4501a8eab2ebfd15e02d93",
+          measurementId: "G-JPE6HZJ7GK"
+        };
+      
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+</script>
     <header class="header">
     <a href="#" class="logo">Task Tracker</a>
     <div class="bx bx-menu" id="menu-icon"></div>
@@ -23,11 +41,7 @@
     <div class="container">
         <h2>Sign Up</h2>
 
-        <form action="" onsubmit="registerUser()">
-            <div class="form-item-username">
-                <input type="text" name="firstName" id="firstName" placeholder="First Name">
-                <input type="text" name="lastName" id="lastName" placeholder="Last Name">
-            </div>
+        <form action="">
 
             <div class="form-item">
                 <input type="email" name="email" id="email" placeholder="Email">
@@ -39,7 +53,6 @@
                     8-15 AlphaNumeric Characters
                 </span>
                 <input type="password" name="password" id="password" placeholder="Enter password">
-                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password">
             </div>
 
             <div class="accept-box">
@@ -57,6 +70,7 @@
         </form>
     </div>
 <script src="app.js"></script>
+<script src="auth.js"></script>
 
     <script src="signup.js"></script>
 </body>

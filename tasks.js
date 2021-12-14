@@ -1,4 +1,4 @@
-const tasksoutput = document.getElementsByClassName("task-containers")[0];
+const tasksoutputs = document.getElementsByClassName("tasksoutput")[0];
 
 const getTask = (type = "all") => {
     const allTask = (type.toLocaleLowerCase() == "all") ?
@@ -38,9 +38,9 @@ const toDom = (filteredTask = null) => {
             }
 
             output += "</div>";
-            tasksoutput.innerHTML = output;
+            tasksoutputs.innerHTML = output;
         } else {
-            tasksoutput.innerHTML = "no Tasks";
+            tasksoutputs.innerHTML = "no Tasks";
         }
     } catch (error) {
         console.log(error.message);

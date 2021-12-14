@@ -80,7 +80,7 @@ function displayTasks() {
       output += "<div>";
 
       for (var a = 0; a < loadedTasks.length; a++) {
-        output += "<h2>" + loadedTasks[a].status + "</h2>";
+        output += "<h2 id='heading'>" + loadedTasks[a].status + "</h2>";
         output += "<span>";
         output +=
           '<input class="x-btn" type="button" value="X" onclick="clearTask(' +
@@ -88,18 +88,9 @@ function displayTasks() {
           ');">';
         output += "<h2>" + loadedTasks[a].title + "</h2>";
         output += loadedTasks[a].content;
-        output +=
-          "<br>" +
-          '<i id="small">' +
-          loadedTasks[a].d +
-          "/" +
-          loadedTasks[a].m +
-          "/" +
-          loadedTasks[a].y +
-          "</i>";
+        output += "<br>" + '<i id="small">' + loadedTasks[a].d + "/" + loadedTasks[a].m + "/" + loadedTasks[a].y + "</i>";
         output += "</span>";
       }
-
       output += "</div>";
       tasksoutput.innerHTML = output;
     } else {
